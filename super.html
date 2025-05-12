@@ -1,12 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"/>
-  <title>Thank You, Shuchi!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet" />
-  <style>
-    * { box-sizing: border-box; }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<title>Thank You, Shuchi!</title>
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&amp;display=swap" rel="stylesheet"/>
+<style>
+    * {
+      box-sizing: border-box;
+    }
     body, html {
       margin: 0; padding: 0; height: 100%; width: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -50,8 +53,12 @@
       text-align: center;
       z-index: 10;
     }
-    .active { display: flex; }
-    .fade-in { animation: fadeIn 1s forwards; }
+    .active {
+      display: flex;
+    }
+    .fade-in {
+      animation: fadeIn 1s forwards;
+    }
 
     .video-background {
       position: relative;
@@ -71,9 +78,10 @@
       padding-top: 56.25%;
       position: relative;
     }
-    iframe, video {
+    iframe {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       border: none;
@@ -89,7 +97,6 @@
       justify-content: space-around;
       align-items: center;
       z-index: 5;
-      pointer-events: none;
     }
     .decorative {
       width: 50px;
@@ -97,6 +104,7 @@
       background: url('path-to-your-decorative-image.png') no-repeat center center;
       background-size: contain;
     }
+
     #typewriterText {
       font-family: 'Satisfy', cursive;
       font-size: 1.8em;
@@ -119,39 +127,26 @@
   </style>
 </head>
 <body>
-
 <div id="container">
-  <!-- Decorative Elements -->
-  <div class="decorative-elements">
-    <div class="decorative"></div>
-    <div class="decorative"></div>
-    <div class="decorative"></div>
-  </div>
-
-  <!-- Intro Message -->
-  <section id="introMessage" class="page active" aria-label="Intro Message">
-    <div id="typewriterText"></div><div class="cursor"></div>
-  </section>
-
-  <!-- Thank You page with Fallback Video -->
-  <section id="thankYouPage" class="page" aria-label="Thank you message for Shuchi">
-    <div class="video-background">
-      <div class="video-container">
-        <!-- Main: Google Drive Embed -->
-        <iframe src="https://drive.google.com/file/d/11D45aa9c81eL6Ll-uo0BNdxbFUalNpsi/preview"
-                allow="autoplay" allowfullscreen></iframe>
-        <!-- Optional: Add a video fallback (only if self-hosted) -->
-        <!--
-        <video autoplay muted playsinline controls>
-          <source src="your-local-fallback-video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        -->
-      </div>
-    </div>
-  </section>
+<!-- Decorative Elements -->
+<div class="decorative-elements">
+<div class="decorative"></div>
+<div class="decorative"></div>
+<div class="decorative"></div>
 </div>
-
+<!-- Intro Message -->
+<section aria-label="Intro Message" class="page active" id="introMessage">
+<div id="typewriterText"></div><div class="cursor"></div>
+</section>
+<!-- Thank You page with Google Drive Video -->
+<section aria-label="Thank you message for Shuchi" class="page" id="thankYouPage">
+<div class="video-background">
+<div class="video-container">
+<iframe allow="autoplay; fullscreen" allowfullscreen="true" src="https://drive.google.com/file/d/11D45aa9c81eL6Ll-uo0BNdxbFUalNpsi/preview"></iframe>
+</div>
+</div>
+</section>
+</div>
 <script>
   const message = "I have composed a video birthday song for you, hope you would like it.\n\nFrom your dear Billu ❤️";
   const typewriter = document.getElementById("typewriterText");
@@ -174,6 +169,16 @@
     document.getElementById('thankYouPage').classList.add('active', 'fade-in');
   }, 9000);
 </script>
-
-</body>
+<button id="fullscreenBtn" style="position:absolute;bottom:20px;right:20px;padding:10px 20px;font-size:1rem;background:#fff;color:#333;border:none;border-radius:10px;cursor:pointer;z-index:20;">🔲 Fullscreen</button><script>
+document.getElementById("fullscreenBtn").addEventListener("click", () => {
+  const iframe = document.querySelector("iframe");
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.webkitRequestFullscreen) {
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) {
+    iframe.msRequestFullscreen();
+  }
+});
+</script></body>
 </html>
