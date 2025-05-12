@@ -169,16 +169,18 @@
     document.getElementById('thankYouPage').classList.add('active', 'fade-in');
   }, 9000);
 </script>
-<button id="fullscreenBtn" style="position:absolute;bottom:20px;right:20px;padding:10px 20px;font-size:1rem;background:#fff;color:#333;border:none;border-radius:10px;cursor:pointer;z-index:20;">🔲 Fullscreen</button><script>
-document.getElementById("fullscreenBtn").addEventListener("click", () => {
+<script>
+document.addEventListener("DOMContentLoaded", () => {
   const iframe = document.querySelector("iframe");
-  if (iframe.requestFullscreen) {
-    iframe.requestFullscreen();
-  } else if (iframe.webkitRequestFullscreen) {
-    iframe.webkitRequestFullscreen();
-  } else if (iframe.msRequestFullscreen) {
-    iframe.msRequestFullscreen();
-  }
+  setTimeout(() => {
+    if (iframe && iframe.requestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe && iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+    } else if (iframe && iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+    }
+  }, 9500);
 });
 </script></body>
 </html>
