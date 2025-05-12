@@ -65,8 +65,7 @@
       border-radius: 20px;
       overflow: hidden;
     }
-    .video-background iframe,
-    .video-background video {
+    .video-background iframe {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -123,11 +122,8 @@
 
   <section id="thankYouPage" class="page" aria-label="Thank you message for Shuchi">
     <div class="video-background">
-      <!-- Replaced iframe with video for better control on mobile/tablet -->
-      <video id="birthdayVideo" playsinline controls preload="auto" poster="poster.jpg">
-        <source src="birthday-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <!-- Embedded Google Drive video with controls -->
+      <iframe src="https://drive.google.com/file/d/11D45aa9c81eL6Ll-uo0BNdxbFUalNpsi/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
   </section>
 </div>
@@ -149,10 +145,6 @@ typeChar();
 setTimeout(() => {
   document.getElementById('introMessage').classList.remove('active');
   document.getElementById('thankYouPage').classList.add('active', 'fade-in');
-
-  // Ensure video plays after interaction for iOS/Android compatibility
-  const video = document.getElementById('birthdayVideo');
-  video.play().catch(err => console.warn('Video play prevented until user interaction:', err));
 }, 9000);
 </script>
 </body>
